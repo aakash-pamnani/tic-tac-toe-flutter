@@ -1,16 +1,19 @@
 # tic_tac_toe
 
-A new Flutter project.
+Multi player TIC-TAC-TOE game made using flutter <br>
+State Management library : Bloc
 
-## Getting Started
+## ScreenShots
 
-This project is a starting point for a Flutter application.
+<img src="screenshots/ss1.png" width="200">
+&nbsp;&nbsp;
+<img src="screenshots/ss2.png" width="200">
 
-A few resources to get you started if this is your first Flutter project:
+<img src="screenshots/ss3.png" width="200">
+&nbsp;&nbsp;
+<img src="screenshots/ss5.png" width="200">
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<img src="screenshots/ss4.png" width="200">
+&nbsp;&nbsp;
+<img src="screenshots/ss6.png" width="200">
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
