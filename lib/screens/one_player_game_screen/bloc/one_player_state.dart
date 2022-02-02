@@ -1,17 +1,19 @@
-part of 'game_screen_bloc.dart';
+part of 'one_player_bloc.dart';
+
+
 
 @immutable
-abstract class GameScreenState {
-  const GameScreenState(this.data, this.isXTurn);
+abstract class OnePlayerState {
+  const OnePlayerState(this.data, this.isXTurn);
   final List<List<String>> data;
   final bool isXTurn;
 }
 
-class GameScreenInitial extends GameScreenState {
+class OnePlayerInitialState extends OnePlayerState {
   final int xWin;
   final int oWin;
   final int draw;
-  const GameScreenInitial(
+  const OnePlayerInitialState(
       {required List<List<String>> data,
       required this.xWin,
       required this.oWin,
@@ -21,23 +23,23 @@ class GameScreenInitial extends GameScreenState {
 
   @override
   String toString() =>
-      'GameScreenInitial(xWin: $xWin, oWin: $oWin, draw: $draw)';
+      'OnePlayerInitialState(xWin: $xWin, oWin: $oWin, draw: $draw)';
 
  
 }
 
-class GameBoardChanged extends GameScreenState {
-  const GameBoardChanged(List<List<String>> data, bool isXTurn)
+class OnePlayerGameBoardChanged extends OnePlayerState {
+  const OnePlayerGameBoardChanged(List<List<String>> data, bool isXTurn)
       : super(data, isXTurn);
 }
 
-class GameOver extends GameScreenState {
+class OnePlayerGameOver extends OnePlayerState {
   final String winner;
   final int xWins;
   final int oWins;
   final int draws;
 
-  const GameOver(
+  const OnePlayerGameOver(
       {required List<List<String>> data,
       required this.winner,
       required this.xWins,
@@ -51,3 +53,4 @@ class GameOver extends GameScreenState {
     return 'GameOver(winner: $winner, xWins: $xWins, oWins: $oWins, draws: $draws)';
   }
 }
+

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tic_tac_toe/HomeScreen/bloc/theme_bloc/bloc/theme_bloc.dart';
+import 'package:tic_tac_toe/screens/home_screen/bloc/theme_bloc/bloc/theme_bloc.dart';
+import 'package:tic_tac_toe/screens/home_screen/view/home_screen.dart';
 
-import 'HomeScreen/view/home_screen.dart';
 
 void main() {
   runApp(const MyApp());

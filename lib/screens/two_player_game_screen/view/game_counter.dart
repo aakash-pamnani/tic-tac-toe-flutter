@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tic_tac_toe/GameScreen/bloc/game_screen_bloc.dart';
+import 'package:tic_tac_toe/screens/two_player_game_screen/bloc/two_player_bloc.dart';
+
+
 
 class GameCounter extends StatelessWidget {
   const GameCounter({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GameScreenBloc, GameScreenState>(
+    return BlocBuilder<TwoPlayerBloc, TwoPlayerState>(
       //the win counter will only change when game is starting or game is over
       /// therefore only build this widget when state is [GameInitilize] or GameOver
       buildWhen: (previous, current) {
-        return current is GameOver || current is GameInitilize;
+        return current is TwoPlayerGameOver || current is TwoPlayerGameInitilize;
       },
       builder: (context, state) {
         int xWins = 0;
         int oWins = 0;
         int draw = 0;
-        if (state is GameScreenInitial) {
+        if (state is TwoPlayerInitialState) {
           xWins = state.xWin;
           oWins = state.oWin;
           draw = state.draw;
-        } else if (state is GameOver) {
+        } else if (state is TwoPlayerGameOver) {
           xWins = state.xWins;
           oWins = state.oWins;
           draw = state.draws;
         }
-        if (state is GameScreenInitial || state is GameOver) {
+        if (state is TwoPlayerInitialState || state is TwoPlayerGameOver) {
           return Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

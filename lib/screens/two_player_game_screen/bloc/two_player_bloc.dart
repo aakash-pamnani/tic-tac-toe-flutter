@@ -2,12 +2,12 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
-part 'game_screen_event.dart';
-part 'game_screen_state.dart';
+part 'two_player_event.dart';
+part 'two_player_state.dart';
 
-class GameScreenBloc extends Bloc<GameScreenEvent, GameScreenState> {
-  GameScreenBloc()
-      : super(const GameScreenInitial(data: [
+class TwoPlayerBloc extends Bloc<TwoPlayerEvent, TwoPlayerState> {
+  TwoPlayerBloc()
+      : super(const TwoPlayerInitialState(data: [
           ["", "", ""],
           ["", "", ""],
           ["", "", ""]
@@ -29,7 +29,7 @@ class GameScreenBloc extends Bloc<GameScreenEvent, GameScreenState> {
     int draw = 0;
     int move = 0;
 
-    on<GameInitilize>((event, emit) {
+    on<TwoPlayerGameInitilize>((event, emit) {
       //gives x and o first chance in alertante games
       isXTurn = (xWins + oWins + draw) % 2 == 0;
 
@@ -42,7 +42,7 @@ class GameScreenBloc extends Bloc<GameScreenEvent, GameScreenState> {
                 3,
                 (_) => "",
               ));
-      emit(GameScreenInitial(
+      emit(TwoPlayerInitialState(
         data: boardArray,
         xWin: xWins,
         oWin: oWins,
@@ -78,7 +78,7 @@ class GameScreenBloc extends Bloc<GameScreenEvent, GameScreenState> {
           }
           HapticFeedback.heavyImpact();
           // Emit game over state with latest data.
-          emit(GameOver(
+          emit(TwoPlayerGameOver(
               data: boardArray,
               winner: winner,
               xWins: xWins,
@@ -88,20 +88,20 @@ class GameScreenBloc extends Bloc<GameScreenEvent, GameScreenState> {
         } else {
           // Change the board if there is no winner or draw.
           HapticFeedback.lightImpact();
-          emit(GameBoardChanged(boardArray, isXTurn));
+          emit(TwoPlayerGameBoardChanged(boardArray, isXTurn));
         }
       }
     });
   }
   @override
-  void onTransition(Transition<GameScreenEvent, GameScreenState> transition) {
+  void onTransition(Transition<TwoPlayerEvent, TwoPlayerState> transition) {
     if (kDebugMode) {
       print(transition);
     }
     super.onTransition(transition);
   }
 
-/// Checks for winner or draw in the game.
+  /// Checks for winner or draw in the game.
   String checkWinnerOrDraw(List<List<String>> boardArray, int moves) {
     String winner = "";
     //check for horizontal and vertical winner

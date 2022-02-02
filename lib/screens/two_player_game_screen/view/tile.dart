@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tic_tac_toe/GameScreen/bloc/game_screen_bloc.dart';
+import 'package:tic_tac_toe/screens/two_player_game_screen/bloc/two_player_bloc.dart';
+
+
 
 /// A single [Tile] that represent O , X or empty
 
@@ -18,7 +20,7 @@ class Tile extends StatelessWidget {
       child: InkWell(
         onTap: () {
           // Add TileTap event on click of tile.
-          BlocProvider.of<GameScreenBloc>(context).add(TileTap(x, y));
+          BlocProvider.of<TwoPlayerBloc>(context).add(TileTap(x, y));
         },
         child: Container(
           padding: const EdgeInsets.all(10),

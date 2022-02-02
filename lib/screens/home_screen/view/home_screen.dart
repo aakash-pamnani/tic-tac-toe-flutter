@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tic_tac_toe/GameScreen/view/game_screen.dart';
-import 'package:tic_tac_toe/HomeScreen/bloc/home_screen_bloc/homescreen_bloc.dart';
-import 'package:tic_tac_toe/HomeScreen/bloc/theme_bloc/bloc/theme_bloc.dart';
-import 'package:tic_tac_toe/HomeScreen/view/creating_game_dailog.dart';
-import 'package:tic_tac_toe/HomeScreen/view/option_dailog.dart';
-import 'package:tic_tac_toe/extensions/extensions.dart';
 
+import 'package:tic_tac_toe/constants/style.dart';
+import 'package:tic_tac_toe/extensions/extensions.dart';
+import 'package:tic_tac_toe/screens/home_screen/bloc/home_screen_bloc/homescreen_bloc.dart';
+import 'package:tic_tac_toe/screens/home_screen/bloc/theme_bloc/bloc/theme_bloc.dart';
+import 'package:tic_tac_toe/screens/one_player_game_screen/view/game_screen.dart';
+import 'package:tic_tac_toe/screens/two_player_game_screen/view/game_screen.dart';
+
+
+import 'creating_game_dailog.dart';
 import 'join_game_dailog.dart';
+import 'option_dailog.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -87,19 +91,19 @@ class HomeScreenView extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         ElevatedButton(
-          style: ButtonStyle(
-              shape: MaterialStateProperty.all<OutlinedBorder>(
-                  RoundedRectangleBorder(
-                      side: BorderSide(
-                          color: Theme.of(context).colorScheme.primary),
-                      borderRadius: BorderRadius.circular(10))),
-              shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
-              backgroundColor:
-                  MaterialStateProperty.all<Color>(Colors.transparent)),
+          style: textButtonStyle,
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return const GameScreen();
-            }));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const OnePlayerGameScreen()));
+          },
+          child: Text("One Player",
+              style: Theme.of(context).textTheme.headline6?.boldText),
+        ),
+        ElevatedButton(
+          style: textButtonStyle,
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const TwoPlayerGameScreen()));
           },
           child: Text("Two Player",
               style: Theme.of(context).textTheme.headline6?.boldText),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tic_tac_toe/GameScreen/bloc/game_screen_bloc.dart';
+import 'package:tic_tac_toe/screens/one_player_game_screen/bloc/one_player_bloc.dart';
+
+
+
 
 import 'tile.dart';
 
@@ -9,7 +12,7 @@ class GameBoard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GameScreenBloc, GameScreenState>(
+    return BlocBuilder<OnePlayerBloc, OnePlayerState>(
       builder: (context, state) {
         return ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 500),

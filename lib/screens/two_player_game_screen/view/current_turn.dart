@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tic_tac_toe/GameScreen/bloc/game_screen_bloc.dart';
+import 'package:tic_tac_toe/screens/two_player_game_screen/bloc/two_player_bloc.dart';
+
+
 
 class CurrentTurn extends StatelessWidget {
   const CurrentTurn({required this.isXTurn, Key? key}) : super(key: key);
@@ -11,7 +13,7 @@ class CurrentTurn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(mainAxisSize: MainAxisSize.min, children: [
-      BlocBuilder<GameScreenBloc, GameScreenState>(builder: (context, state) {
+      BlocBuilder<TwoPlayerBloc, TwoPlayerState>(builder: (context, state) {
         if (state.isXTurn) {
           return Image.asset(
             "assets/images/x.png",

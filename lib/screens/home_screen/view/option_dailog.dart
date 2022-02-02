@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tic_tac_toe/HomeScreen/bloc/home_screen_bloc/homescreen_bloc.dart';
+
 import 'package:tic_tac_toe/extensions/extensions.dart';
+import 'package:tic_tac_toe/screens/home_screen/bloc/home_screen_bloc/homescreen_bloc.dart';
 
 class OptionDailog extends StatelessWidget {
   const OptionDailog({Key? key}) : super(key: key);

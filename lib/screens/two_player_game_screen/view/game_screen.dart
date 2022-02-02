@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tic_tac_toe/GameScreen/bloc/game_screen_bloc.dart';
+import 'package:tic_tac_toe/screens/two_player_game_screen/bloc/two_player_bloc.dart';
+
 
 import 'current_turn.dart';
 import 'game_board.dart';
 import 'game_counter.dart';
 
 /// Screen to play the game.
-class GameScreen extends StatelessWidget {
-  const GameScreen({Key? key}) : super(key: key);
+class TwoPlayerGameScreen extends StatelessWidget {
+  const TwoPlayerGameScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocProvider(
-        create: (context) => GameScreenBloc(),
-        child: BlocBuilder<GameScreenBloc, GameScreenState>(
+        create: (context) => TwoPlayerBloc(),
+        child: BlocBuilder<TwoPlayerBloc, TwoPlayerState>(
           builder: (context, state) {
             // Listen to changes in state.
-            return BlocListener<GameScreenBloc, GameScreenState>(
+            return BlocListener<TwoPlayerBloc, TwoPlayerState>(
               listener: (context, state) {
                 // if game is over then show dailog of winner or draw
-                if (state is GameOver) {
+                if (state is TwoPlayerGameOver) {
                   showDialog(
                       barrierDismissible: false,
                       
@@ -35,8 +36,8 @@ class GameScreen extends StatelessWidget {
                               label: const Text("Replay"),
                               onPressed: () {
                                 // on pressing replay add event of [GameInitilize] and pop the dailog.
-                                BlocProvider.of<GameScreenBloc>(context)
-                                    .add(GameInitilize());
+                                BlocProvider.of<TwoPlayerBloc>(context)
+                                    .add(TwoPlayerGameInitilize());
                                 Navigator.pop(context);
                               },
                               icon: const Icon(Icons.restart_alt),
@@ -44,7 +45,7 @@ class GameScreen extends StatelessWidget {
                             TextButton(
                               child: const Text("Home"),
                               onPressed: () {
-                                // on pressing Home pop dailog and [GameScreen].
+                                // on pressing Home pop dailog and [TwoPlayer].
                                 Navigator.pop(dailogContext);
                                 Navigator.pop(context);
                               },
